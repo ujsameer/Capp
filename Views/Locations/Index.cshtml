@@ -1,0 +1,64 @@
+@model IEnumerable<Capp.Models.Location>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        @*<th>
+            CreatedBy
+        </th>
+        <th>
+            Description
+        </th>*@
+        <th>
+            &nbsp;&nbsp;Date
+        </th>
+        <th>
+            &nbsp;&nbsp;Location
+        </th>
+        <th>
+            &nbsp;&nbsp;Amount
+        </th>
+        <th>
+            &nbsp;&nbsp;TransactionBy
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LocationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LocationId }) 
+        </td>
+        @*<td>
+			@item.CreatedBy
+        </td>
+        <td>
+			@item.Description
+        </td>*@
+        <td>
+			&nbsp;&nbsp;@String.Format("{0:g}", item.LocationDate)
+        </td>
+        <td>
+			&nbsp;&nbsp;@item.LocationName
+        </td>
+        <td>
+			&nbsp;&nbsp;@String.Format("{0:F}", item.Amount)
+        </td>
+        <td>
+			&nbsp;&nbsp;@item.TransactionBy
+        </td>
+    </tr>
+}
+
+</table>
+
+
